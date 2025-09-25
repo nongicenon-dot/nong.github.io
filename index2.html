@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>สรุปหลักสูตรสังคมศึกษา ระดับมัธยมศึกษาตอนปลาย</title>
+    <title>ครูนายสังคมศึกษา - การวิเคราะห์แหล่งข้อมูลการเรียนรู้</title>
     <style>
+        :root {
+            --primary: #1a4b8c;
+            --secondary: #e63946;
+            --light: #f1faee;
+            --accent: #a8dadc;
+            --dark: #1d3557;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Sarabun', 'TH Sarabun New', 'Angsana New', sans-serif;
+            font-family: 'Kanit', 'Sarabun', sans-serif;
         }
         
         body {
-            background-color: #f5f5f5;
+            background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
         }
@@ -21,248 +29,431 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
         
         header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, var(--primary), var(--dark));
             color: white;
-            padding: 30px 0;
+            padding: 2rem 0;
             text-align: center;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
-        h1 {
+        header h1 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
         }
         
-        .subtitle {
+        header p {
             font-size: 1.2rem;
             opacity: 0.9;
         }
         
-        .content-section {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
-        h2 {
-            color: #1e3c72;
-            border-bottom: 2px solid #eaeaea;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-        
-        h3 {
-            color: #2a5298;
-            margin: 20px 0 10px;
-            font-size: 1.4rem;
-        }
-        
-        .grade-section {
+        nav ul {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
         }
         
-        .grade-card {
-            flex: 1;
-            min-width: 300px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            padding: 20px;
-            border-left: 4px solid #2a5298;
+        nav li {
+            margin: 0 1rem;
         }
         
-        .subject-list {
-            list-style-type: none;
-            margin-left: 15px;
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
         
-        .subject-list li {
-            margin-bottom: 8px;
+        nav a:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
             position: relative;
-            padding-left: 15px;
         }
         
-        .subject-list li:before {
-            content: "•";
-            color: #2a5298;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--secondary);
+            padding-left: 1rem;
         }
         
         .highlight {
-            background-color: #fff9e6;
-            padding: 15px;
-            border-radius: 5px;
-            border-left: 4px solid #ffc107;
-            margin: 15px 0;
-        }
-        
-        .structure-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .structure-item {
-            background: #f0f7ff;
-            padding: 15px;
+            background-color: var(--accent);
+            padding: 1.5rem;
             border-radius: 8px;
-            text-align: center;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .content-list {
+            list-style-type: none;
+        }
+        
+        .content-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .content-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
             font-weight: bold;
-            color: #1e3c72;
+        }
+        
+        .partner-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .partner-logo {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+            min-width: 150px;
         }
         
         footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
             text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            color: #666;
-            font-size: 0.9rem;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
         }
         
         @media (max-width: 768px) {
-            .grade-section {
+            nav ul {
                 flex-direction: column;
+                align-items: center;
             }
             
-            h1 {
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            header h1 {
                 font-size: 2rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Sarabun:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>เอกสารสรุปหลักสูตรสังคมศึกษา</h1>
-            <p class="subtitle">ระดับมัธยมศึกษาตอนปลาย (ม.4-ม.6)</p>
-            <p class="subtitle">อ้างอิงจากหลักสูตรแกนกลางการศึกษาขั้นพื้นฐาน พ.ศ. 2551</p>
-        </header>
-        
-        <section class="content-section">
-            <h2>บทสรุปสำหรับผู้บริหาร</h2>
-            <p>เอกสารฉบับนี้สรุปภาพรวมเนื้อหาหลักสูตรวิชาสังคมศึกษาในระดับมัธยมศึกษาตอนปลาย (ม.4-ม.6) โดยอ้างอิงจากโครงสร้างหลักสูตรแกนกลางการศึกษาขั้นพื้นฐาน พ.ศ. 2551 ซึ่งแบ่งเนื้อหาออกเป็น 5 สาระการเรียนรู้หลัก ได้แก่ ศาสนาฯ, หน้าที่พลเมืองฯ, เศรษฐศาสตร์, ประวัติศาสตร์, และภูมิศาสตร์</p>
-            
-            <div class="highlight">
-                <p>การจัดเรียงเนื้อหาในแต่ละชั้นปีอาจแตกต่างกันไปในแต่ละโรงเรียนเนื่องจากเนื้อหาแต่ละสาระไม่มีความต่อเนื่องกัน อย่างไรก็ตาม รูปแบบที่พบได้ทั่วไปคือ:</p>
-                <ul class="subject-list">
-                    <li><strong>ระดับชั้น ม.4:</strong> เน้นสาระศาสนาฯ และหน้าที่พลเมืองฯ</li>
-                    <li><strong>ระดับชั้น ม.5:</strong> เน้นสาระเศรษฐศาสตร์และประวัติศาสตร์ไทย</li>
-                    <li><strong>ระดับชั้น ม.6:</strong> เน้นสาระประวัติศาสตร์สากลและภูมิศาสตร์</li>
-                </ul>
+    <header>
+        <div class="container">
+            <h1>ครูนายสังคมศึกษา</h1>
+            <p>การวิเคราะห์แหล่งข้อมูลการเรียนรู้สำหรับนักเรียนมัธยมศึกษาตอนปลาย</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#overview">ภาพรวมและวัตถุประสงค์</a></li>
+                <li><a href="#content">โครงสร้างเนื้อหา</a></li>
+                <li><a href="#sources">แหล่งข้อมูลภายนอก</a></li>
+                <li><a href="#technology">เทคโนโลยีการศึกษา</a></li>
+                <li><a href="#profile">ข้อมูลผู้จัดทำ</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="overview">
+        <div class="container">
+            <h2 class="section-title">ภาพรวมและวัตถุประสงค์หลัก</h2>
+            <div class="card">
+                <p>เว็บไซต์ "ครูนายสังคมศึกษา" จัดทำโดย ครูนายด์ (Mongkhon S.) จากโรงเรียน วร. (WR School) เป็นศูนย์กลางการเรียนรู้ที่ครอบคลุมสำหรับนักเรียนระดับมัธยมศึกษาตอนปลาย โดยมีวัตถุประสงค์หลัก 2 ประการ:</p>
+                <div class="highlight">
+                    <ol>
+                        <li>การเตรียมความพร้อมสำหรับการสอบเข้ามหาวิทยาลัยในวิชาสังคมศึกษา (O-NET, A-Level, TCAS)</li>
+                        <li>การให้ความรู้เชิงลึกเฉพาะทางด้านนิติศาสตร์และรัฐศาสตร์</li>
+                    </ol>
+                </div>
+                <p><strong>เจตนารมณ์:</strong> เว็บไซต์ระบุชัดเจนว่าเป็นการรวบรวมข้อมูลเพื่อการศึกษา เผยแพร่เป็นวิทยาทาน โดยไม่แสวงหาผลกำไร</p>
+                <p><strong>การเคารพทรัพย์สินทางปัญญา:</strong> มีคำชี้แจงเกี่ยวกับการรวบรวมไฟล์จากสังคมออนไลน์ และแสดงความพร้อมที่จะลบเนื้อหาหากมีการแจ้งเรื่องการละเมิดลิขสิทธิ์</p>
             </div>
-        </section>
-        
-        <section class="content-section">
-            <h2>โครงสร้างหลักสูตรสังคมศึกษา</h2>
-            <p>วิชาสังคมศึกษาในระดับมัธยมศึกษาตอนปลายประกอบด้วย 5 สาระการเรียนรู้หลัก ดังนี้:</p>
-            
-            <div class="structure-grid">
-                <div class="structure-item">ศาสนา ศีลธรรม จริยธรรม</div>
-                <div class="structure-item">หน้าที่พลเมือง วัฒนธรรม และการดำเนินชีวิตในสังคม</div>
-                <div class="structure-item">เศรษฐศาสตร์</div>
-                <div class="structure-item">ประวัติศาสตร์</div>
-                <div class="structure-item">ภูมิศาสตร์</div>
-            </div>
-            
-            <p>แม้ว่าการจัดลำดับการสอนเนื้อหาในแต่ละชั้นปีจะขึ้นอยู่กับแต่ละสถานศึกษา บทความนี้ได้นำเสนอการจัดเรียงตามรูปแบบที่โรงเรียนส่วนใหญ่นิยมใช้</p>
-        </section>
-        
-        <section class="content-section">
-            <h2>เนื้อหาสาระตามระดับชั้น</h2>
-            
-            <div class="grade-section">
-                <div class="grade-card">
-                    <h3>ระดับชั้นมัธยมศึกษาปีที่ 4</h3>
-                    <p><strong>สาระที่ 1: ศาสนา ศีลธรรม จริยธรรม</strong></p>
-                    <ul class="subject-list">
-                        <li>ประวัติและความสำคัญของพระพุทธศาสนา</li>
-                        <li>พุทธประวัติและชาดก</li>
-                        <li>วันสำคัญทางพระพุทธศาสนาและศาสนพิธี</li>
-                        <li>หลักธรรมทางพระพุทธศาสนา</li>
-                        <li>พระไตรปิฎกและพุทธศาสนสุภาษิต</li>
-                        <li>การบริหารจิตและเจริญปัญญา</li>
-                        <li>พุทธสาวก พุทธสาวิกา และศาสนิกชนตัวอย่าง</li>
-                        <li>หน้าที่และมารยาทของชาวพุทธ</li>
-                        <li>ความรู้ทั่วไปของศาสนา</li>
-                        <li>ศาสนาสำคัญในประเทศไทย</li>
-                    </ul>
-                    
-                    <p><strong>สาระที่ 2: หน้าที่พลเมือง วัฒนธรรม และการดำเนินชีวิตในสังคม</strong></p>
-                    <ul class="subject-list">
-                        <li>สังคมมนุษย์</li>
-                        <li>วัฒนธรรมไทย</li>
-                        <li>พลเมืองดีของประเทศชาติและสังคมมนุษย์</li>
-                        <li>สิทธิมนุษยชน</li>
-                        <li>ระบอบการเมืองการปกครอง</li>
-                        <li>รัฐธรรมนูญแห่งราชอาณาจักรไทย</li>
-                        <li>กฎหมายในชีวิตประจำวัน</li>
+        </div>
+    </section>
+    
+    <section id="content">
+        <div class="container">
+            <h2 class="section-title">โครงสร้างเนื้อหาและกลุ่มเป้าหมาย</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>สังคมศึกษาเพื่อการสอบเข้ามหาวิทยาลัย</h3>
+                    <p>มุ่งเน้นการเตรียมความพร้อมนักเรียนสำหรับการสอบแข่งขันในระบบ TCAS ครอบคลุม:</p>
+                    <ul class="content-list">
+                        <li>O-NET, A-NET, วิชาสามัญสังคมศึกษา, A-Level 70 SOC</li>
+                        <li>เนื้อหาครอบคลุม 5 สาระหลัก: ศาสนา-ศีลธรรม, หน้าที่พลเมือง, เศรษฐศาสตร์, ประวัติศาสตร์, ภูมิศาสตร์</li>
+                        <li>เอกสารสรุป, คลังข้อสอบเก่า, วิดีโอติว</li>
                     </ul>
                 </div>
                 
-                <div class="grade-card">
-                    <h3>ระดับชั้นมัธยมศึกษาปีที่ 5</h3>
-                    <p><strong>สาระที่ 3: เศรษฐศาสตร์</strong></p>
-                    <ul class="subject-list">
-                        <li>เศรษฐศาสตร์เบื้องต้น</li>
-                        <li>ระบบเศรษฐกิจในโลกปัจจุบัน</li>
-                        <li>เศรษฐกิจพอเพียงกับการพัฒนาเศรษฐกิจของไทย</li>
-                        <li>สหกรณ์และการรวมกลุ่มเพื่อการพัฒนาชุมชนของไทย</li>
-                        <li>นโยบายการเงิน การคลัง</li>
-                        <li>เศรษฐกิจระหว่างประเทศ</li>
-                    </ul>
-                    
-                    <p><strong>สาระที่ 4: ประวัติศาสตร์ไทย</strong></p>
-                    <ul class="subject-list">
-                        <li>เวลาและยุคสมัยทางประวัติศาสตร์ไทย</li>
-                        <li>การสร้างองค์ความรู้ทางประวัติศาสตร์ไทย</li>
-                        <li>วิเคราะห์ประเด็นสำคัญทางประวัติศาสตร์ไทย</li>
-                        <li>ผลงานของบุคคลสำคัญในการสร้างสรรค์ชาติไทย</li>
-                        <li>การสร้างสรรค์วัฒนธรรมและภูมิปัญญาไทย</li>
-                    </ul>
-                </div>
-                
-                <div class="grade-card">
-                    <h3>ระดับชั้นมัธยมศึกษาปีที่ 6</h3>
-                    <p><strong>สาระที่ 4: ประวัติศาสตร์สากล</strong></p>
-                    <ul class="subject-list">
-                        <li>เวลาและการแบ่งยุคสมัยทางประวัติศาสตร์สากล</li>
-                        <li>การสร้างองค์ความรู้ใหม่ทางประวัติศาสตร์สากล</li>
-                        <li>อารยธรรมของโลกยุคโบราณ</li>
-                        <li>เหตุการณ์สำคัญทางประวัติศาสตร์ที่มีผลต่อโลกปัจจุบัน</li>
-                        <li>สถานการณ์สำคัญของโลกในคริสต์ศตวรรษที่ 21</li>
-                    </ul>
-                    
-                    <p><strong>สาระที่ 5: ภูมิศาสตร์</strong></p>
-                    <ul class="subject-list">
-                        <li>เครื่องมือทางภูมิศาสตร์</li>
-                        <li>การเปลี่ยนแปลงทางกายภาพของโลก</li>
-                        <li>สิ่งแวดล้อมทางกายภาพกับประชากร</li>
-                        <li>สิ่งแวดล้อมทางกายภาพกับกิจกรรมทางเศรษฐกิจ</li>
-                        <li>ภัยพิบัติทางธรรมชาติ</li>
-                        <li>ทรัพยากรธรรมชาติและสิ่งแวดล้อม</li>
+                <div class="card">
+                    <h3>หลักสูตรเฉพาะทางด้านนิติศาสตร์และรัฐศาสตร์</h3>
+                    <p>ส่วนที่โดดเด่น มุ่งพัฒนานักเรียนที่มีความสนใจด้านกฎหมายและการเมืองอย่างลึกซึ้ง:</p>
+                    <ul class="content-list">
+                        <li>รายวิชาเฉพาะทาง: ความรู้เบื้องต้นเกี่ยวกับกฎหมาย, กฎหมายแพ่งและพาณิชย์, ความถนัดทางนิติ-รัฐศาสตร์</li>
+                        <li>กิจกรรมเสริมหลักสูตร: การแข่งขันตอบปัญหา, ฝึกประสบการณ์วิชาชีพ, ศึกษาดูงาน</li>
+                        <li>ทรัพยากรเพิ่มเติม: ฐานข้อมูล, แนวทางการจัดทำ Portfolio, ข้อสอบจำลอง</li>
                     </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+    
+    <section id="sources">
+        <div class="container">
+            <h2 class="section-title">การรวบรวมและคัดสรรเนื้อหาจากแหล่งภายนอก</h2>
+            <div class="card">
+                <p>เว็บไซต์ทำหน้าที่เป็นผู้รวบรวม (Aggregator) และคัดสรร (Curator) เนื้อหาคุณภาพจากบุคคลและสถาบันภายนอก</p>
+                
+                <h3>ผู้สอนและติวเตอร์ที่มีชื่อเสียง</h3>
+                <div class="grid">
+                    <div>
+                        <ul class="content-list">
+                            <li>ครูพี่บอล (SummarySocialByP_Ball)</li>
+                            <li>ครูพัชริดา สระทองอินทร์</li>
+                            <li>P'Dome TCAS Coach</li>
+                            <li>KruBus So (สรุปภูมิศาสตร์)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="content-list">
+                            <li>อ.อานนท์ ตั้งกิตติทรัพย์</li>
+                            <li>nropahttun (สรุปสังคม ห้ามขายต่อ)</li>
+                            <li>BURINplus</li>
+                            <li>ครูพี่โน่ และครูพี่โตมร</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>โครงการความร่วมมือและสถาบัน</h3>
+                <div class="partner-logos">
+                    <div class="partner-logo">Singdam Go A-Level</div>
+                    <div class="partner-logo">กล่องความรู้ สู่ความสุข A-LEVEL</div>
+                    <div class="partner-logo">AFTERKLASS</div>
+                    <div class="partner-logo">มหาวิทยาลัยศรีนครินทรวิโรฒ</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="technology">
+        <div class="container">
+            <h2 class="section-title">การบูรณาการเทคโนโลยีเพื่อการศึกษา</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>แพลตฟอร์มการจัดการเรียนรู้</h3>
+                    <ul class="content-list">
+                        <li>WR e-Learning: Moodle LMS</li>
+                        <li>Office 365 A1</li>
+                        <li>E-Portfolio by New Google Site</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>เครื่องมือสร้างสื่อการสอนและประเมินผล</h3>
+                    <ul class="content-list">
+                        <li>Canva for Education</li>
+                        <li>Classpoint</li>
+                        <li>Zipgrade</li>
+                        <li>Apple for Education</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>ระบบศาลยุติธรรมออนไลน์</h3>
+                    <p>มีการอ้างอิงถึงระบบ e-Filing, CIOS และ COJ ไกล่เกลี่ย เพื่อเชื่อมโยงความรู้ในชั้นเรียนกับการปฏิบัติจริง</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="profile">
+        <div class="container">
+            <h2 class="section-title">ข้อมูลระบุตัวตนและกิจกรรมทางวิชาชีพ</h2>
+            <div class="card">
+                <div class="grid">
+                    <div>
+                        <h3>ผู้จัดทำ</h3>
+                        <p><strong>ครูนายด์ (Mongkhon S.)</strong></p>
+                        <p>ประจำอยู่ห้อง 327 โรงเรียน วร. (WR School)</p>
+                        
+                        <h3>ข้อมูลติดต่อ</h3>
+                        <p>อีเมล: mongkhon@wr.ac.th</p>
+                        <p>โทรศัพท์: 055 711 901</p>
+                    </div>
+                    
+                    <div>
+                        <h3>การประเมินผลงาน (PA)</h3>
+                        <p>มีการจัดเก็บรายงานการประเมินผลการปฏิบัติงาน (PA Report) ตั้งแต่ปี 2565-2568</p>
+                        
+                        <h3>รางวัลและความสำเร็จ</h3>
+                        <p>ได้รับ "รางวัลครูผู้สอนกฎหมายดีเด่น 2567" ซึ่งสะท้อนถึงความเชี่ยวชาญและความทุ่มเทในการสอนกฎหมาย</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>เอกสารสรุป: การวิเคราะห์แหล่งข้อมูลการเรียนรู้ "ครูนายสังคมศึกษา"</p>
+            <p>เว็บไซต์ต้นฉบับ: <a href="https://nine.wr.ac.th" style="color: var(--accent);">https://nine.wr.ac.th</a></p>
+        </div>
+    </footer>
+    
+    <a href="#" class="back-to-top">↑</a>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
         
-        <footer>
-            <p>เอกสารสรุปหลักสูตรสังคมศึกษา ระดับมัธยมศึกษาตอนปลาย (ม.4-ม.6)</p>
-            <p>อ้างอิงจากหลักสูตรแกนกลางการศึกษาขั้นพื้นฐาน พ.ศ. 2551</p>
-        </footer>
-    </div>
+        // Back to top button functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Add animation to cards when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Initially set cards to be invisible and slightly translated
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>สรุป สังคม ม.ปลาย — Layout หรู</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0f1724; /* deep midnight */
+      --card: #0b1220;
+      --muted: #9aa4b2;
+      --accent: #7c5cff;
+      --glass: rgba(255,255,255,0.04);
+    }
+    /* reset */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg,#071126 0%, #081026 60%);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
+      line-height:1.6;
+      padding:40px;
+    }
+
+    .wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:start}
+
+    /* left nav */
+    .nav{
+      position:sticky;top:40px;padding:20px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter: blur(6px);border-radius:18px;box-shadow:0 6px 30px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.04)
+    }
+    .brand{display:flex;gap:12px;align-items:center;margin-bottom:18px}
+    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#4ad0ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:#051024;font-family:'Playfair Display';font-size:18px}
+    h1.title{font-family:'Playfair Display';font-weight:700;font-size:18px;margin:0}
+    p.sub{margin:4px 0 12px;color:var(--muted);font-size:13px}
+
+    .toc{list-style:none;padding:0;margin:8px 0}
+    .toc li{margin:6px 0}
+    .toc a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:600;font-size:14px}
+    .toc a .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(180deg,var(--accent),#55e2c1);box-shadow:0 4px 18px rgba(92,78,255,0.18)}
+    .toc a:hover{background:var(--glass);color:#fff}
+    .toc a.active{background:linear-gradient(90deg, rgba(124,92,255,0.14), rgba(85,226,193,0.06));color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
+
+    /* right content */
+    .content{padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:20px;box-shadow:0 8px 40px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    header.hero{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+    header.hero .eyebrow{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--muted)}
+    header.hero h2{margin:0;font-family:'Playfair Display';font-size:22px}
+    header.hero p {margin:0;color:var(--muted)}
+
+    article section{padding:28px;border-radius:12px;margin-bottom:18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.008));border:1px solid rgba(255,255,255,0.02)}
+    article h3{font-family:'Playfair Display';margin:0 0 8px 0;font-size:18px;color:#fff}
+    article p{margin:0 0 10px 0;color:var(--muted);font-size:15px}
+    ul.detail{margin:10px 0 0 18px;color:var(--muted)}
+
+    /* responsive */
+    @media (max-width:880px){
+      .wrap{grid-template-columns:1fr;padding:0}
+      .nav{position:relative;top:0}
+    }
+
+    /* small helper */
+    .muted{color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav" aria-label="Table of contents">
+      <div class="brand">
+        <div class="logo">TD</div>
+        <div>
+          <h1 class="title">สรุป สังคม ม.ปลาย</h1>
+          <p class="sub">สรุปเนื้อหา 5 กลุ่มสาระ — หยิบอ่านไว ทำข้อสอบดี</p>
+        </div>
+      </div>
+      <ul class="toc">
+        <li><a href="#religion" class="active"><span class="dot"></span> ศาสนา / ศีลธรรม</a></li>
+        <li><a href="#civics"><span class="dot"></span> หน้าที่พลเมือง</a></li>
+        <li><a href="#econ"><span class="dot"></span> เศรษฐศาสตร์</a></li>
+        <li><a href="#history"><span class="dot"></span> ประวัติศาสตร์</a></li>
+        <li><a href="#geo"><span class="dot"></span> ภูมิศาสตร์</a></li>
+      </ul>
+      <p class="muted">ข้อมูลจาก SmartMathPro</p>
+    </nav>
+
+    <main class="content">
+      <header class="hero">
+        <div>
+          <div class="eyebrow">ข้อมูลสังคม มปลาย</div>
+          <h2>สรุป สังคมศึกษา ม.ปลาย (ม.4 ม.5 ม.6)</h2>
+          <p class="muted">บทสรุปแบ่งเป็น 5 กลุ่มสาระ — เหมาะสำหรับทำความเข้าใจแบบรวดเร็ว</p>
+        </div>
+      </header>
+
+      <article id="article">
+        <section id="religion">
+          <h3>สาระที่ 1: ศาสนา ศีลธรรม จริยธรรม</h3>
+          <p>เนื้อหาครอบคลุมพุทธประวัติ หลักธรรม วันสำคัญของศาสนา การปฏิบัติตัว และความรู้ทั่วไปของศาสนาอื่น ๆ ที่อยู่ในประเทศไทย</p>
+          <ul class="detail">
+            <li>พุทธประวัติ, ชาดก, หลักธรรมสำคัญ (อริยสัจ 4, พรหมวิหาร 4)</li>
+            <li>ศาสนา ศีลธรรม และจริยธรรม ถือเป็นรากฐานสำคัญของการดำเนินชีวิตในสังคม ศาสนามอบแนวทางและหลักคำสอนที่ช่วยให้มนุษย์เข้าใจความหมายของชีวิต 
+                รู้จักความดี ความชั่ว และการอยู่ร่วมกับผู้อื่นอย่างสงบ 
+                ศีลธรรมคือบรรทัดฐานของพฤติกรรมที่สังคมยอมรับ
+                 เช่น ความซื่อสัตย์ ความรับผิดชอบ และการเคารพผู้อื่น ส่วนจริยธรรมเป็นการนำหลักศาสนาและศีลธรรมมาปรับใช้กับสถานการณ์จริง
+                  เพื่อเลือกกระทำในสิ่งที่ถูกต้อง เหมาะสม และเป็นประโยชน์ต่อส่วนรวม ดังนั้น การเรียนรู้และปฏิบัติตามศาสนา ศีลธรรม และจริยธรรม ไม่ได้ทำให้เราเป็นเพียงคนดีต่อตนเองเท่านั้น 
+                  แต่ยังเป็นพลังสำคัญในการสร้างสังคมที่อบอุ่น ยุติธรรม และมีความสุขร่วมกัน</li>
+                  <img src="https://cdn.pixabay.com/photo/2018/05/17/11/38/berlin-cathedral-3408348_960_720.jpg"
+                  width="450" 
+                  height="auto"
+          </ul>
+        </section>
+
+        <section id="civics">
+          <h3>สาระที่ 2: หน้าที่พลเมือง วัฒนธรรม และการดำเนินชีวิต</h3>
+          <p>พูดถึงความหมายของสังคม โครงสร้างสังคม สถาบันทางสังคม การขัดเกลาทางสังคม วัฒนธรรมไทย และสิทธิมนุษยชน</p>
+          <ul class="detail">
+            <li>พลเมืองดี, สิทธิมนุษยชน, รัฐธรรมนูญ</li>
+            <li>หน้าที่พลเมือง วัฒนธรรม และการดำเนินชีวิต เป็นส่วนสำคัญที่ทำให้สังคมดำเนินไปอย่างราบรื่น 
+                หน้าที่พลเมืองหมายถึงความรับผิดชอบและบทบาทของเราในการมีส่วนร่วมสร้างสังคม 
+                เช่น การเคารพกฎหมาย การเลือกตั้ง การรักษาสาธารณสมบัติ และการช่วยเหลือผู้อื่น 
+                วัฒนธรรมสะท้อนเอกลักษณ์และรากฐานทางความคิดของสังคม ทั้งด้านภาษา ศิลปะ ประเพณี และวิถีชีวิต 
+                ซึ่งช่วยสร้างความภาคภูมิใจและความเป็นเอกลักษณ์ของชุมชน การดำเนินชีวิตจึงต้องผสมผสานความรับผิดชอบต่อหน้าที่ 
+                การเคารพวัฒนธรรม และการสร้างความสมดุลในชีวิตประจำวัน 
+                เพื่อให้เราเติบโตเป็นบุคคลที่มีคุณค่าและอยู่ร่วมกับผู้อื่นอย่างกลมกลืน</li>
+                <img src="https://media.istockphoto.com/id/1716489243/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B9%84%E0%B8%AD%E0%B8%84%E0%B8%AD%E0%B8%99%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%81%E0%B8%8E%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%99%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%88%E0%B8%AD%E0%B9%81%E0%B8%94%E0%B8%8A%E0%B8%9A%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%94%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A8%E0%B8%B6%E0%B8%81%E0%B8%A9%E0%B8%B2%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%84%E0%B9%89%E0%B8%99%E0%B8%AB%E0%B8%B2%E0%B8%81%E0%B8%8E%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2%E0%B8%9A%E0%B9%89%E0%B8%B2.jpg?s=1024x1024&w=is&k=20&c=CrETf0ZJ6TMAaJ9652FUL_uDuG0UR0_yOZKyZAxys-Y="
+                width="400"
+                height="auto"
+          </ul>
+        </section>
+
+        <section id="econ">
+          <h3>สาระที่ 3: เศรษฐศาสตร์</h3>
+          <p>ปูพื้นฐานเศรษฐศาสตร์ ทั้งจุลภาคและมหภาค เช่น อุปสงค์-อุปทาน เงินเฟ้อ ระบบเศรษฐกิจ และเศรษฐกิจพอเพียง</p>
+          <ul class="detail">
+            <li>เศรษฐศาสตร์เบื้องต้น, ระบบเศรษฐกิจ, เศรษฐกิจพอเพียง</li>
+            <li>เศรษฐศาสตร์เป็นศาสตร์ที่ศึกษาเกี่ยวกับการจัดสรรทรัพยากรที่จำกัดของมนุษย์เพื่อสร้างความต้องการและประโยชน์สูงสุดในชีวิตประจำวัน 
+                ทั้งในระดับบุคคล ครอบครัว และสังคม มันช่วยให้เราเข้าใจการผลิต การบริโภค การแลกเปลี่ยน และการกระจายสินค้าและบริการ 
+                นอกจากนี้เศรษฐศาสตร์ยังสอนให้เราตัดสินใจอย่างรอบคอบ รู้จักวางแผนการเงิน ใช้จ่ายอย่างมีเหตุผล 
+                และมองเห็นผลกระทบของการกระทำต่อส่วนรวม ความรู้ด้านเศรษฐศาสตร์จึงไม่ใช่แค่เรื่องตัวเลข 
+                แต่เป็นเครื่องมือสำคัญในการใช้ชีวิตอย่างมีคุณค่าและสร้างสังคมที่มีความเจริญเติบโตอย่างยั่งยืน</li>
+                <img src="https://cdn.pixabay.com/photo/2017/09/07/08/54/money-2724241_1280.jpg"
+                width="400"
+                height="auto"
+          </ul>
+        </section>
+
+        <section id="history">
+          <h3>สาระที่ 4: ประวัติศาสตร์</h3>
+          <p>ประวัติศาสตร์คือการศึกษาการเกิดขึ้นและการเปลี่ยนแปลงของสังคมมนุษย์ในอดีต 
+            ทั้งเหตุการณ์ บุคคลสำคัญ แนวคิด และวัฒนธรรมที่หล่อหลอมสังคมเรา 
+            ประวัติศาสตร์ช่วยให้เราเข้าใจเหตุผลของการเกิดเหตุการณ์ต่าง ๆ เรียนรู้จากความสำเร็จและความล้มเหลว 
+            และเห็นความเชื่อมโยงระหว่างอดีตกับปัจจุบัน นอกจากนี้ การศึกษาประวัติศาสตร์ยังสร้างทักษะในการคิดวิเคราะห์ วิพากษ์ 
+            และตัดสินใจอย่างรอบคอบ ทำให้เราไม่เพียงรับรู้เรื่องราวในอดีต 
+            แต่สามารถนำบทเรียนเหล่านั้นมาปรับใช้ในการดำเนินชีวิตและการสร้างสังคมที่ดีขึ้น</p>
+            <img src="https://cdn.pixabay.com/photo/2022/02/05/13/12/building-6994803_960_720.jpg"
+            width="400"
+            height="auto"
+        </section>
+
+        <section id="geo">
+          <h3>สาระที่ 5: ภูมิศาสตร์</h3>
+          <p>ภูมิศาสตร์เป็นศาสตร์ที่ศึกษาเกี่ยวกับโลกทั้งด้านธรรมชาติและสังคม 
+            มันช่วยให้เราเข้าใจลักษณะภูมิประเทศ ภูมิอากาศ ทรัพยากรธรรมชาติ รวมถึงการกระจายตัวของประชากรและกิจกรรมทางเศรษฐกิจ
+             ภูมิศาสตร์ไม่เพียงแค่บอกตำแหน่งที่ตั้ง แต่ยังช่วยให้เราเห็นความสัมพันธ์ระหว่างสิ่งแวดล้อมกับการดำเนินชีวิตของมนุษย์ 
+             การมีความรู้ด้านภูมิศาสตร์ทำให้เราตัดสินใจวางแผน การใช้ทรัพยากร และการอยู่ร่วมกับธรรมชาติอย่างสมดุลและยั่งยืน</p>
+             <img src="https://media.istockphoto.com/id/1190455899/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B9%80%E0%B8%AD%E0%B9%80%E0%B8%8A%E0%B8%B5%E0%B8%A2%E0%B8%95%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%80%E0%B8%89%E0%B8%B5%E0%B8%A2%E0%B8%87%E0%B9%83%E0%B8%95%E0%B9%89%E0%B8%88%E0%B8%B2%E0%B8%81%E0%B8%AD%E0%B8%A7%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B9%83%E0%B8%99%E0%B9%80%E0%B8%A7%E0%B8%A5%E0%B8%B2%E0%B8%81%E0%B8%A5%E0%B8%B2%E0%B8%87%E0%B8%84%E0%B8%B7%E0%B8%99%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B9%84%E0%B8%9F%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87%E0%B9%81%E0%B8%AA%E0%B8%94%E0%B8%87%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87%E0%B9%83%E0%B8%99%E0%B9%80%E0%B8%AD%E0%B9%80%E0%B8%8A%E0%B8%B5%E0%B8%A2%E0%B8%95%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%80%E0%B8%89%E0%B8%B5%E0%B8%A2%E0%B8%87.jpg?s=1024x1024&w=is&k=20&c=4046tM6z_PCt4wPoN25tdCozneT1rtcoGR6k2hJ_R-0="
+             width="400"
+             height="auto"
+        </section>
+
+      </article>
+
+      <footer class="muted">ข้อมูลสรุปจาก SmartMathPro </footer>
+    </main>
+  </div>
+
+  <main class="content">
+      <header class="hero">
+        <div>
+          <div class="eyebrow">Thepbodint จัดทำโดยระดับชั้นมัธยมศึกษาปีที่ 4/4</div>
+          <div class="eyebrow">นำเสนอหัวข้อโครงงานห้องเกี่ยวกับเว็บไซน์ให้ความรู้ระดับชั้น ม.ปลาย</div>
+
+  <script>
+    // smooth scroll + active toc
+    const links = document.querySelectorAll('.toc a');
+    links.forEach(a=>a.addEventListener('click', e=>{
+      e.preventDefault();
+      links.forEach(x=>x.classList.remove('active'));
+      a.classList.add('active');
+      document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth', block:'start'});
+    }));
+
+    // highlight on scroll
+    const sections = Array.from(document.querySelectorAll('article section'));
+    window.addEventListener('scroll', ()=>{
+      const top = window.scrollY + 120;
+      let current = sections.find(s=> s.offsetTop <= top && s.offsetTop + s.offsetHeight > top);
+      if(!current) current = sections[0];
+      links.forEach(l=> l.classList.remove('active'));
+      const active = Array.from(links).find(l=> l.getAttribute('href') === '#'+current.id);
+      if(active) active.classList.add('active');
+    });
+  </script>
+</body>
+</html>
